@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ReflectOS-Controll-App/controllers/authController.dart';
+import 'package:controll_app/controllers/authController.dart';
+
+import '../controllers/settingsController.dart';
 
 
 class LoginView extends StatefulWidget {
@@ -19,8 +21,8 @@ class _LoginView extends State<LoginView> {
   /// Maak content in widget schoon
   @override
   void dispose() {
-    this.emailController.dispose();
-    this.passwordController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -51,9 +53,9 @@ class _LoginView extends State<LoginView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 30.0),
+              const SizedBox(height: 30.0),
               Container(
-                margin: EdgeInsets.fromLTRB(40.0, 00.0, 40.0, 00.0),
+                margin: const EdgeInsets.fromLTRB(40.0, 00.0, 40.0, 00.0),
                 decoration: BoxDecoration(
                   color: ColorPalette.backgroundColorDark,
                   borderRadius: BorderRadius.circular(15.0),
@@ -64,7 +66,7 @@ class _LoginView extends State<LoginView> {
                       ColorPalette.backgroundColorDark,
                       ColorPalette.backgroundColorLight,
                     ],
-                    stops: [
+                    stops: const [
                       0.0,
                       0.6,
                     ],
@@ -72,12 +74,12 @@ class _LoginView extends State<LoginView> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.white,
-                      offset: -Offset(6.0, 4.0),
+                      offset: -const Offset(6.0, 4.0),
                       blurRadius: 12.0,
                     ),
                     BoxShadow(
                       color: ColorPalette.backgroundColorDarker,
-                      offset: Offset(6.0, 4.0),
+                      offset: const Offset(6.0, 4.0),
                       blurRadius: 12.0,
                     ),
                   ],
@@ -87,7 +89,7 @@ class _LoginView extends State<LoginView> {
                   style: style,
                   controller: emailController,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     hintText: 'Emailadres..',
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -96,21 +98,21 @@ class _LoginView extends State<LoginView> {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Container(
-                margin: EdgeInsets.fromLTRB(40.0, 00.0, 40.0, 00.0),
+                margin: const EdgeInsets.fromLTRB(40.0, 00.0, 40.0, 00.0),
                 decoration: BoxDecoration(
                   color: ColorPalette.backgroundColorDark,
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.white,
-                      offset: -Offset(6.0, 4.0),
+                      offset: -const Offset(6.0, 4.0),
                       blurRadius: 12.0,
                     ),
                     BoxShadow(
                       color: ColorPalette.backgroundColorDarker,
-                      offset: Offset(6.0, 4.0),
+                      offset: const Offset(6.0, 4.0),
                       blurRadius: 12.0,
                     ),
                   ],
@@ -120,7 +122,7 @@ class _LoginView extends State<LoginView> {
                   style: style,
                   controller: passwordController,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     hintText: 'Wachtwoord..',
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -129,9 +131,9 @@ class _LoginView extends State<LoginView> {
                   ),
                 ),
               ),
-              SizedBox(height: 40.0),
+              const SizedBox(height: 40.0),
               Container(
-                margin: EdgeInsets.fromLTRB(40.0, 00.0, 40.0, 00.0),
+                margin: const EdgeInsets.fromLTRB(40.0, 00.0, 40.0, 00.0),
                 decoration: BoxDecoration(
                   color: ColorPalette.interfaceColorDark,
                   borderRadius: BorderRadius.circular(15.0),
@@ -144,13 +146,13 @@ class _LoginView extends State<LoginView> {
                         ColorPalette.gradientColor3,
                         ColorPalette.gradientColor4,
                       ],
-                      stops: [
+                      stops: const [
                         0.1,
                         0.4,
                         0.6,
                         0.9,
                       ]),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black,
                       offset: Offset(0.0, 0.0),
@@ -161,13 +163,13 @@ class _LoginView extends State<LoginView> {
                 ),
                 child: MaterialButton(
                   minWidth: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                  padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                   onPressed: () async {
-                    AlertDialog(
+                    const AlertDialog(
                       title: Text("Dit is een melding"),
                     );
-                    await LoginController.login(this.emailController.text,
-                        this.passwordController.text, context);
+                    await LoginController.login(emailController.text,
+                        passwordController.text, context);
                   },
                   child: Text(
                     'Inloggen',
@@ -181,12 +183,12 @@ class _LoginView extends State<LoginView> {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               GestureDetector(
                   onTap: () async {
                     Navigator.pushNamed(context, '/register');
                   },
-                  child: Text('Of maak een nieuw account')
+                  child: const Text('Of maak een nieuw account')
               ),
             ],
           ),
